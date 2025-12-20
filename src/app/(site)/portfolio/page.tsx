@@ -1,12 +1,15 @@
-import { client } from "@/sanity/lib/client";
+"use client";
+
 import { ProjectCard } from "@/components/card/ProjectCard";
 import { FolderGit2 } from "lucide-react";
-import { allProjectsQuery, Project } from "@/constants/projects";
+import { PaginationControls as Pagination } from "../../../components/paginations/PaginationControls";
+import { useProjects } from "@/hooks/useProjects";
 
-export const revalidate = 0;
+export default function PortfolioPage() {
+  const { loading, currentItems, totalPages, currentPage, goToPage } =
+    useProjects(6);
 
-export default async function PortfolioPage() {
-  const projects: Project[] = await client.fetch(allProjectsQuery);
+  if (loading) return null;
 
   return (
     <main className="min-h-screen bg-white dark:bg-neutral-950 pt-24 pb-20">
@@ -27,10 +30,11 @@ export default async function PortfolioPage() {
           </p>
         </div>
       </section>
+
       <section className="container mx-auto px-4 md:px-6 max-w-5xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {projects.length > 0 ? (
-            projects.map((project) => (
+          {currentItems.length > 0 ? (
+            currentItems.map((project) => (
               <ProjectCard key={project._id} project={project} />
             ))
           ) : (
@@ -41,6 +45,12 @@ export default async function PortfolioPage() {
             </div>
           )}
         </div>
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={goToPage}
+        />
       </section>
     </main>
   );

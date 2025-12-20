@@ -86,7 +86,7 @@ function SkillCard({ name, icon: Icon }: { name: string; icon: any }) {
             bg-white dark:bg-neutral-900/40 
             border border-neutral-200 dark:border-neutral-800
             shadow-sm hover:shadow-md dark:shadow-none
-            hover:border-blue-500/30 dark:hover:border-blue-500/30
+            hover:border-cyan-500/30 dark:hover:border-cyan-500/30
             transition-all duration-300
         "
     >
