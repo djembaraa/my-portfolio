@@ -8,7 +8,9 @@ export interface Project {
   tags: string[];
   demoUrl?: string;
   githubUrl?: string;
-  slug: string;
+  slug: {
+    curent: string;
+  }
 }
 
 export const featuredProjectsQuery = groq`*[_type == "project" && featured == true] | order(_createdAt desc)[0...3] {
