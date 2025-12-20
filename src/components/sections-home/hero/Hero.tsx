@@ -61,7 +61,7 @@ export function Hero() {
             className="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4"
           >
             <a
-              href="#contact"
+              href="/contact"
               className="group relative overflow-hidden px-6 py-3 sm:px-8 sm:py-4 bg-neutral-900 dark:bg-white text-white dark:text-black font-bold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg text-sm sm:text-base"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#2CA852] to-[#5B369D] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
