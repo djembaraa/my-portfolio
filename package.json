@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@formspree/react": "^3.0.0",
     "@radix-ui/react-slot": "^1.2.3",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^4.22.0",

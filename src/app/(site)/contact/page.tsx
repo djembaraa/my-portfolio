@@ -10,8 +10,11 @@ import {
   Check,
 } from "lucide-react";
 import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 
 export default function ContactPage() {
+  const [state, handleSubmit] = useForm("mgowkawz");
+
   const [copied, setCopied] = useState(false);
 
   const handleCopyEmail = () => {
@@ -46,7 +49,7 @@ export default function ContactPage() {
               bg-white dark:bg-neutral-900/40 
               border border-neutral-200 dark:border-neutral-800 
               backdrop-blur-sm
-              hover:border-blue-500/30 dark:hover:border-blue-500/30
+              hover:border-cyan-500/30 dark:hover:border-cyan-500/30
               transition-all duration-300
               hover:shadow-lg dark:hover:shadow-none
             "
@@ -56,16 +59,16 @@ export default function ContactPage() {
               </h3>
 
               <div className="space-y-4">
-                <div className="group flex items-center justify-between p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-100 dark:border-neutral-700 hover:border-blue-500/30 transition-colors">
+                <div className="group flex items-center justify-between p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-100 dark:border-neutral-700 hover:border-cyan-500/30 transition-colors">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 shadow-sm group-hover:text-blue-500 transition-colors">
+                    <div className="p-2 rounded-lg bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 shadow-sm group-hover:text-cyan-500 transition-colors">
                       <Mail size={18} />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs text-neutral-400 font-medium">
                         Email me at
                       </span>
-                      <span className="text-sm font-medium text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      <span className="text-sm font-medium text-neutral-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                         djembararafat98@gmail.com
                       </span>
                     </div>
@@ -73,7 +76,7 @@ export default function ContactPage() {
                   <button
                     type="button"
                     onClick={handleCopyEmail}
-                    className="p-2 rounded-lg hover:bg-white dark:hover:bg-neutral-700 text-neutral-400 hover:text-blue-500 transition-all"
+                    className="p-2 rounded-lg hover:bg-white dark:hover:bg-neutral-700 text-neutral-400 hover:text-cyan-500 transition-all"
                     aria-label="Copy Email"
                   >
                     {copied ? <Check size={16} /> : <Copy size={16} />}
@@ -81,14 +84,14 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-center gap-3 p-3 group rounded-xl hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors border border-transparent hover:border-neutral-100 dark:hover:border-neutral-700">
-                  <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 group-hover:text-blue-500 transition-colors">
+                  <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 group-hover:text-cyan-500 transition-colors">
                     <MapPin size={18} />
                   </div>
                   <div className="flex flex-col">
                     <span className="text-xs text-neutral-400 font-medium">
                       Based in
                     </span>
-                    <span className="text-sm font-medium text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <span className="text-sm font-medium text-neutral-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                       Banyumas, Indonesia
                     </span>
                   </div>
@@ -115,86 +118,148 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Form Column */}
           <div className="md:col-span-3">
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="
+            {state.succeeded ? (
+              <div
+                className="
+                h-full flex flex-col items-center justify-center text-center
                 p-6 md:p-8 
                 rounded-2xl 
                 bg-white dark:bg-neutral-900/40 
                 border border-neutral-200 dark:border-neutral-800 
                 backdrop-blur-md 
                 shadow-sm
-                hover:border-blue-500/30 dark:hover:border-blue-500/30
+              "
+              >
+                <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-full text-green-600 dark:text-green-400 mb-4">
+                  <Check size={32} />
+                </div>
+                <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+                  Message Sent!
+                </h3>
+                <p className="text-neutral-500 dark:text-neutral-400 mb-6 max-w-sm">
+                  Thank you for reaching out. I will get back to you shortly at
+                  djembararafat98@gmail.com.
+                </p>
+                <button
+                  onClick={() => window.location.reload()}
+                  className="px-6 py-2.5 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-black font-medium text-sm hover:opacity-90 transition-opacity"
+                >
+                  Send Another Message
+                </button>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="
+                p-6 md:p-8 
+                rounded-2xl 
+                bg-white dark:bg-neutral-900/40 
+                border border-neutral-200 dark:border-neutral-800 
+                backdrop-blur-md 
+                shadow-sm
+                hover:border-cyan-500/30 dark:hover:border-cyan-500/30
                 hover:shadow-lg dark:hover:shadow-none
                 transition-all duration-300
               "
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                <div className="space-y-2">
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="name"
+                      className="text-sm font-medium text-neutral-700 dark:text-neutral-300"
+                    >
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 transition-all placeholder:text-neutral-400 text-sm text-neutral-900 dark:text-white"
+                      placeholder="John Doe"
+                    />
+                    <ValidationError
+                      prefix="Name"
+                      field="name"
+                      errors={state.errors}
+                      className="text-xs text-red-500"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="email"
+                      className="text-sm font-medium text-neutral-700 dark:text-neutral-300"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 transition-all placeholder:text-neutral-400 text-sm text-neutral-900 dark:text-white"
+                      placeholder="john@example.com"
+                    />
+                    <ValidationError
+                      prefix="Email"
+                      field="email"
+                      errors={state.errors}
+                      className="text-xs text-red-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2 mb-6">
                   <label
-                    htmlFor="name"
+                    htmlFor="subject"
                     className="text-sm font-medium text-neutral-700 dark:text-neutral-300"
                   >
-                    Name
+                    Subject
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-neutral-400 text-sm text-neutral-900 dark:text-white"
-                    placeholder="John Doe"
+                    id="subject"
+                    name="subject"
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 transition-all placeholder:text-neutral-400 text-sm text-neutral-900 dark:text-white"
+                    placeholder="Project Inquiry"
+                  />
+                  <ValidationError
+                    prefix="Subject"
+                    field="subject"
+                    errors={state.errors}
+                    className="text-xs text-red-500"
                   />
                 </div>
-                <div className="space-y-2">
+
+                <div className="space-y-2 mb-8">
                   <label
-                    htmlFor="email"
+                    htmlFor="message"
                     className="text-sm font-medium text-neutral-700 dark:text-neutral-300"
                   >
-                    Email
+                    Message
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-neutral-400 text-sm text-neutral-900 dark:text-white"
-                    placeholder="john@example.com"
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 transition-all placeholder:text-neutral-400 text-sm resize-none text-neutral-900 dark:text-white"
+                    placeholder="Tell me about your project..."
+                  />
+                  <ValidationError
+                    prefix="Message"
+                    field="message"
+                    errors={state.errors}
+                    className="text-xs text-red-500"
                   />
                 </div>
-              </div>
 
-              <div className="space-y-2 mb-6">
-                <label
-                  htmlFor="subject"
-                  className="text-sm font-medium text-neutral-700 dark:text-neutral-300"
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-neutral-400 text-sm text-neutral-900 dark:text-white"
-                  placeholder="Project Inquiry"
-                />
-              </div>
-
-              <div className="space-y-2 mb-8">
-                <label
-                  htmlFor="message"
-                  className="text-sm font-medium text-neutral-700 dark:text-neutral-300"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-neutral-400 text-sm resize-none text-neutral-900 dark:text-white"
-                  placeholder="Tell me about your project..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="
                         group w-full relative flex items-center justify-center gap-2 
                         py-3.5 rounded-xl 
                         bg-neutral-900 dark:bg-white 
@@ -202,18 +267,22 @@ export default function ContactPage() {
                         font-medium text-sm
                         overflow-hidden
                         transition-all hover:shadow-lg hover:-translate-y-0.5
+                        disabled:opacity-70 disabled:cursor-not-allowed
                     "
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#2CA852] to-[#5B369D] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative flex items-center gap-2 group-hover:text-white transition-colors">
-                  Send Message{" "}
-                  <Send
-                    size={16}
-                    className="group-hover:translate-x-1 transition-transform"
-                  />
-                </span>
-              </button>
-            </form>
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#2CA852] to-[#5B369D] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="relative flex items-center gap-2 group-hover:text-white transition-colors">
+                    {state.submitting ? "Sending..." : "Send Message"}
+                    {!state.submitting && (
+                      <Send
+                        size={16}
+                        className="group-hover:translate-x-1 transition-transform"
+                      />
+                    )}
+                  </span>
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
@@ -240,8 +309,8 @@ function SocialLink({
                 rounded-lg 
                 bg-neutral-50 dark:bg-neutral-800 
                 border border-neutral-200 dark:border-neutral-700
-                hover:border-blue-500/50 hover:bg-blue-50 dark:hover:bg-blue-900/20
-                text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400
+                hover:border-cyan-500/50 hover:bg-cyan-50 dark:hover:bg-cyan-900/20
+                text-neutral-600 dark:text-neutral-400 hover:text-cyan-600 dark:hover:text-cyan-400
                 text-sm font-medium
                 transition-all duration-300
                 hover:-translate-y-0.5
