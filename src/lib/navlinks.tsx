@@ -3,7 +3,7 @@ import { JSX, SVGProps } from 'react'
 export const navigation = [
   {
     name: 'LinkedIn',
-    username: 'linkedin.com',
+    username: 'https://www.linkedin.com/in/djembar-arafat-9a6602178/',
     icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
       <svg fill='currentColor' viewBox='0 0 448 512' {...props}>
         <path
@@ -14,17 +14,17 @@ export const navigation = [
     )
   },
   {
-    name: 'X',
-    username: 'x.com',
-    icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
-      <svg fill='currentColor' viewBox='0 0 24 24' {...props}>
-        <path d='M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z' />
-      </svg>
-    )
+    name: 'Instagram',
+      username: 'https://www.instagram.com/djembararafat/',
+      icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
+        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+          <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+        </svg>
+      ),
   },
   {
     name: 'GitHub',
-    username: 'github.com',
+    username: 'https://github.com/djembaraa',
     icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
       <svg fill='currentColor' viewBox='0 0 24 24' {...props}>
         <path
