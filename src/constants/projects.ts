@@ -9,7 +9,7 @@ export interface Project {
   demoUrl?: string;
   githubUrl?: string;
   slug: {
-    curent: string;
+    current: string;
   }
 }
 
