@@ -40,7 +40,7 @@ import {
 
 export type SkillItem = {
   name: string;
-  icon: (props: any) => JSX.Element;
+  icon: (props: any) => React.JSX.Element;
 };
 
 function makeBadgeIcon(label: string) {
@@ -121,7 +121,7 @@ export const row2: SkillItem[] = [
 
   { name: "PHP", icon: wrap(SiPhp) },
   { name: "Laravel", icon: wrap(SiLaravel) },
-  { name: "Filament", icon: IconFilament }, // fallback (kalau nggak ada di simple-icons)
+  { name: "Filament", icon: IconFilament },
   { name: "InertiaJS", icon: wrap(SiInertia) },
 
   { name: "Supabase", icon: wrap(SiSupabase) },
