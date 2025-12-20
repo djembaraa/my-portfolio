@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Djembar Arafat - Personal Portfolio
 
-## Getting Started
+A modern, high-performance personal portfolio website designed to showcase projects, skills, and professional certifications. Built with the latest web technologies including **Next.js 15**, **React 19**, **Tailwind CSS v4**, and **Sanity CMS**.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+This project leverages a cutting-edge stack focused on performance, scalability, and developer experience.
+
+| Category | Technology |
+|----------|------------|
+| **Framework** | [Next.js 15](https://nextjs.org/) (App Router) |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) |
+| **UI Library** | [React 19](https://react.dev/) |
+| **CMS** | [Sanity.io](https://www.sanity.io/) (Headless CMS) |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) & [Styled Components](https://styled-components.com/) |
+| **Animations** | [Framer Motion](https://www.framer.com/motion/) |
+| **Icons** | [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/) |
+| **Theming** | [next-themes](https://github.com/pacocoursey/next-themes) (Dark/Light Mode) |
+| **Package Manager** | NPM |
+
+## ✨ Key Features
+
+* **Dynamic Content Management:** Integrated with Sanity CMS for easy updates of projects, blogs, and certifications without touching the code.
+* **Responsive Design:** Fully responsive layout built with Tailwind CSS v4 mobile-first approach.
+* **Dark/Light Mode:** Seamless theme switching supported by `next-themes`.
+* **Smooth Animations:** Interactive UI elements powered by Framer Motion.
+* **Interactive Carousel:** Project showcases utilizing `swiper` for touch-friendly sliding.
+* **Optimized Performance:** Utilizing Next.js 15 Turbopack for fast development and optimized production builds.
+
+## 🛠️ Getting Started
+
+Follow these steps to set up the project locally on your machine.
+
+### Prerequisites
+
+* Node.js (v20 or later recommended)
+* NPM or Yarn
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/yourusername/portfolio-2.git](https://github.com/yourusername/portfolio-2.git)
+    cd portfolio-2
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Environment Variables:**
+    Create a `.env.local` file in the root directory and add your Sanity credentials:
+
+    ```env
+    NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+    NEXT_PUBLIC_SANITY_DATASET=production
+    NEXT_PUBLIC_BASE_URL=http://localhost:3000
+    ```
+
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+
+5.  **Open the project:**
+    Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🗂️ Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+portfolio-2/
+├── app/                  # Next.js App Router directories
+├── components/           # Reusable UI components
+│   ├── layout/           # Navbar, Footer, etc.
+│   ├── theme/            # Theme toggle logic
+│   └── ui/               # Small UI elements
+├── constants/            # Static data and configuration
+├── lib/                  # Library configurations (Sanity client, utils)
+├── sanity/               # Sanity studio configuration and schemas
+├── styles/               # Global styles
+└── utils/                # Helper functions
