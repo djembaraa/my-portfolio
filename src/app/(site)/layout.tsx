@@ -32,7 +32,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <CursorTrail />
+          <div className="hidden lg:block">
+            <CursorTrail />
+          </div>
+
           <div className="flex min-h-screen flex-col">
             <div className="mx-auto w-full max-w-7xl sm:px-6 lg:px-8 flex-1 flex flex-col">
               <Navbar />
@@ -43,11 +46,9 @@ export default function RootLayout({
 
               <Footer />
             </div>
-
           </div>
         </ThemeProvider>
       </body>
     </html>
   );
 }
-
