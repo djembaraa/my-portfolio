@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, Github } from "lucide-react";
 import { client } from "@/sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
@@ -18,8 +19,19 @@ interface ProjectProps {
     tags: string[];
     demoUrl?: string;
     githubUrl?: string;
-    slug: { current: string };
+    slug: any;
   };
+}
+
+function truncateText(text: string, maxChars: number) {
+  const t = (text ?? "").trim();
+  if (t.length <= maxChars) return t;
+
+  const cut = t.slice(0, maxChars);
+  const lastSpace = cut.lastIndexOf(" ");
+  const pretty = lastSpace > 40 ? cut.slice(0, lastSpace) : cut;
+
+  return `${pretty}...`;
 }
 
 export function ProjectCard({ project }: ProjectProps) {
@@ -28,9 +40,17 @@ export function ProjectCard({ project }: ProjectProps) {
       ? `${project.title.substring(0, 20)}...`
       : project.title;
 
+  const slugCurrent =
+    typeof project.slug === "string" ? project.slug : project.slug?.current;
+
+  const displayDescription = truncateText(project.description, 115);
+
   return (
     <div className="group relative flex flex-col bg-white dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden hover:border-blue-500/30 dark:hover:border-blue-500/30 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-      <div className="relative w-full aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-800 border-b border-neutral-100 dark:border-neutral-800">
+      <Link
+        href={`/portfolio/${slugCurrent}`}
+        className="block relative w-full aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-800 border-b border-neutral-100 dark:border-neutral-800 cursor-pointer"
+      >
         {project.image ? (
           <Image
             src={urlFor(project.image).url()}
@@ -44,17 +64,19 @@ export function ProjectCard({ project }: ProjectProps) {
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
+      </Link>
 
       <div className="flex flex-col flex-1 p-5">
         <div className="mb-3">
-          <h3 className="text-base md:text-lg font-bold text-neutral-900 dark:text-white group-hover:text-cyan-500 transition-colors">
-            {displayTitle}
-          </h3>
+          <Link href={`/portfolio/${slugCurrent}`}>
+            <h3 className="text-base md:text-lg font-bold text-neutral-900 dark:text-white group-hover:text-cyan-500 transition-colors cursor-pointer">
+              {displayTitle}
+            </h3>
+          </Link>
         </div>
 
-        <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6 line-clamp-3">
-          {project.description}
+        <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6">
+          {displayDescription}
         </p>
 
         <div className="mt-auto flex items-end justify-between gap-2">
