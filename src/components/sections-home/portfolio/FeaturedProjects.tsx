@@ -5,7 +5,9 @@ import { ProjectCard } from "@/components/card/ProjectCard";
 import { featuredProjectsQuery, Project } from "@/constants/projects";
 
 export async function FeaturedProjects() {
-  const projects: Project[] = await client.fetch(featuredProjectsQuery);
+  const projects: Project[] = await client.fetch(featuredProjectsQuery, {}, {
+  cache: "no-store", 
+});
 
   return (
     <section
