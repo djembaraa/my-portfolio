@@ -56,13 +56,9 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-neutral-100 dark:border-neutral-800/50 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 text-[10px] md:text-xs text-neutral-400 dark:text-neutral-500 font-mono uppercase tracking-wider">
           <span>Based in Banyumas, Indonesia</span>
           <span className="flex items-center gap-1">
-            Built with
+            Member of
             <span className="text-neutral-600 dark:text-neutral-300 font-bold">
-              Next.js
-            </span>
-            &
-            <span className="text-cyan-600 dark:text-cyan-400 font-bold">
-              Tailwind
+              <a href="https://www.uwisara.com/" target="_blank" rel="noopener noreferrer"/>
             </span>
           </span>
         </div>
