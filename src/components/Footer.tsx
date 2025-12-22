@@ -58,7 +58,13 @@ export default function Footer() {
           <span className="flex items-center gap-1">
             Member of
             <span className="text-neutral-600 dark:text-neutral-300 font-bold">
-              <a href="https://www.uwisara.com/" target="_blank" rel="noopener noreferrer"/>
+              <a
+                href="https://www.uwisara.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Uwisara
+              </a>
             </span>
           </span>
         </div>
