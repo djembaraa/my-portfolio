@@ -1,5 +1,7 @@
 # Djembar Arafat - Personal Portfolio
 
+<img width="1440" height="1024" alt="my cv - cover" src="https://github.com/user-attachments/assets/f46ff880-cd70-4053-bbef-75dcbc343475" />
+
 A modern, high-performance personal portfolio website designed to showcase projects, skills, and professional certifications. Built with the latest web technologies including **Next.js 15**, **React 19**, **Tailwind CSS v4**, and **Sanity CMS**.
 
 ## 🚀 Tech Stack
