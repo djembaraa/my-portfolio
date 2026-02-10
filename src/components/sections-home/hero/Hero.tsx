@@ -75,7 +75,7 @@ export function Hero() {
             </a>
 
             <a
-              href="https://drive.google.com/file/d/1GSBk-cy6OzRDlPC3Mb3PiWpc3tKLumeI/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1ueDzanTrF8RhRz-eYmC5O7igqKuiZSTf/view?usp=sharing"
               className="group relative px-6 py-3 sm:px-8 sm:py-4 bg-transparent border border-transparent hover:border-cyan-500 text-neutral-500 dark:text-neutral-400 hover:text-cyan-500 dark:hover:text-cyan-500 font-medium rounded-full transition-all duration-300 flex items-center gap-2 text-sm sm:text-base"
             >
               Download CV
